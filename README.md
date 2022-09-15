@@ -4,6 +4,11 @@ Basic Video Chat Sample App
 The Basic-Video-Chat app is a very simple application meant to get a new developer
 started using the OpenTok iOS SDK.
 
+
+WatchRTC
+-----------
+WatchRTC related code is located in **ViewController.swift** file
+
 Quick Start
 -----------
 
