@@ -1,0 +1,24 @@
+# Mac OS X
+*.DS_Store
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xcworkspace/
+project.xcworkspace/
+xcuserdata/
+
+# Build products
+*.xcarchive/
+
+# Podfiles
+Pods/
+
+# SPM
+Package.resolved
+/.build
+/Packages
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
