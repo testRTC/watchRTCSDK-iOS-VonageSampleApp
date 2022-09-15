@@ -8,6 +8,8 @@
 
 import UIKit
 import OpenTok
+import WatchRTC_SDK_iOS
+import SwiftyJSON
 
 // *** Fill the following variables using your own Project info  ***
 // ***            https://tokbox.com/account/#/                  ***
@@ -34,8 +36,22 @@ class ViewController: UIViewController {
     
     var subscriber: OTSubscriber?
     
+    private var watchRtc: WatchRTC?
+    
+    fileprivate var rtcStatsReportCallback: ((RTCStatsReport) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        publisher.rtcStatsReportDelegate = self
+        
+        let con: WatchRTCConfig = WatchRTCConfig(rtcApiKey: "staging:6d3873f0-f06e-4aea-9a25-1a959ab988cc", rtcRoomId: "VonageTest1", keys: ["company":["YourCompanyName"]])
+        self.watchRtc = WatchRTC(dataProvider: self)
+        guard let watchRtc = self.watchRtc else {
+            debugPrint("error with watchRtc initialization")
+            return
+        }
+        watchRtc.setConfig(config: con)
         
         doConnect()
     }
@@ -51,6 +67,10 @@ class ViewController: UIViewController {
         }
         
         session.connect(withToken: kToken, error: &error)
+        
+        watchRtc?.addEvent(name: "doConnect",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId])
     }
     
     /**
@@ -70,6 +90,10 @@ class ViewController: UIViewController {
             pubView.frame = CGRect(x: 0, y: 0, width: kWidgetWidth, height: kWidgetHeight)
             view.addSubview(pubView)
         }
+        
+        watchRtc?.addEvent(name: "doPublish",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId])
     }
     
     /**
@@ -84,8 +108,16 @@ class ViewController: UIViewController {
             processError(error)
         }
         subscriber = OTSubscriber(stream: stream, delegate: self)
+        subscriber?.rtcStatsReportDelegate = self
         
         session.subscribe(subscriber!, error: &error)
+        
+        watchRtc?.addEvent(name: "doSubscribe",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId,
+                                        "streamId" : stream.streamId,
+                                        "streamName" : stream.name,
+                                        "creationTime" : "\(stream.creationTime.timeIntervalSince1970*1000)"])
     }
     
     fileprivate func cleanupSubscriber() {
@@ -112,15 +144,37 @@ class ViewController: UIViewController {
 extension ViewController: OTSessionDelegate {
     func sessionDidConnect(_ session: OTSession) {
         print("Session connected")
+        
+        do
+        {
+            try watchRtc?.connect()
+            watchRtc?.setUserRating(rating: 4, ratingComment: "Put your rating value")
+            watchRtc?.addEvent(name: "sessionDidConnect", type: EventType.global, parameters: ["sessionId": session.sessionId])
+        } catch {
+            debugPrint(error)
+        }
+        
         doPublish()
     }
     
     func sessionDidDisconnect(_ session: OTSession) {
         print("Session disconnected")
+        
+        watchRtc?.addEvent(name: "sessionDidDisconnect", type: EventType.global, parameters: ["sessionId": session.sessionId])
+        
+        watchRtc?.disconnect()
     }
     
     func session(_ session: OTSession, streamCreated stream: OTStream) {
         print("Session streamCreated: \(stream.streamId)")
+        
+        watchRtc?.addEvent(name: "sessionStreamCreated",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId,
+                                        "streamId" : stream.streamId,
+                                        "streamName" : stream.name,
+                                        "creationTime" : "\(stream.creationTime.timeIntervalSince1970*1000)"])
+        
         if subscriber == nil {
             doSubscribe(stream)
         }
@@ -128,6 +182,14 @@ extension ViewController: OTSessionDelegate {
     
     func session(_ session: OTSession, streamDestroyed stream: OTStream) {
         print("Session streamDestroyed: \(stream.streamId)")
+        
+        watchRtc?.addEvent(name: "sessionStreamDestroyed",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId,
+                                        "streamId" : stream.streamId,
+                                        "streamName" : stream.name,
+                                        "creationTime" : "\(stream.creationTime.timeIntervalSince1970*1000)"])
+        
         if let subStream = subscriber?.stream, subStream.streamId == stream.streamId {
             cleanupSubscriber()
         }
@@ -135,6 +197,11 @@ extension ViewController: OTSessionDelegate {
     
     func session(_ session: OTSession, didFailWithError error: OTError) {
         print("session Failed to connect: \(error.localizedDescription)")
+        
+        watchRtc?.addEvent(name: "sessionDidFailWithError",
+                           type: EventType.global,
+                           parameters: ["sessionId" : session.sessionId,
+                                        "error" : error.localizedDescription])
     }
     
 }
@@ -143,9 +210,23 @@ extension ViewController: OTSessionDelegate {
 extension ViewController: OTPublisherDelegate {
     func publisher(_ publisher: OTPublisherKit, streamCreated stream: OTStream) {
         print("Publishing")
+        
+        watchRtc?.addEvent(name: "publisherStreamCreated",
+                           type: EventType.global,
+                           parameters: ["publisherName" : publisher.name,
+                                        "streamId" : stream.streamId,
+                                        "streamName" : stream.name,
+                                        "creationTime" : "\(stream.creationTime.timeIntervalSince1970*1000)"])
     }
     
     func publisher(_ publisher: OTPublisherKit, streamDestroyed stream: OTStream) {
+        watchRtc?.addEvent(name: "publisherStreamDestroyed",
+                           type: EventType.global,
+                           parameters: ["publisherName" : publisher.name,
+                                        "streamId" : stream.streamId,
+                                        "streamName" : stream.name,
+                                        "creationTime" : "\(stream.creationTime.timeIntervalSince1970*1000)"])
+        
         cleanupPublisher()
         if let subStream = subscriber?.stream, subStream.streamId == stream.streamId {
             cleanupSubscriber()
@@ -154,12 +235,21 @@ extension ViewController: OTPublisherDelegate {
     
     func publisher(_ publisher: OTPublisherKit, didFailWithError error: OTError) {
         print("Publisher failed: \(error.localizedDescription)")
+        
+        watchRtc?.addEvent(name: "publisherDidFailWithError",
+                           type: EventType.global,
+                           parameters: ["publisherName" : publisher.name,
+                                        "error" : error.localizedDescription])
     }
 }
 
 // MARK: - OTSubscriber delegate callbacks
 extension ViewController: OTSubscriberDelegate {
     func subscriberDidConnect(toStream subscriberKit: OTSubscriberKit) {
+        watchRtc?.addEvent(name: "subscriberDidConnectToStream",
+                           type: EventType.global,
+                           parameters: nil)
+        
         if let subsView = subscriber?.view {
             subsView.frame = CGRect(x: 0, y: kWidgetHeight, width: kWidgetWidth, height: kWidgetHeight)
             view.addSubview(subsView)
@@ -168,5 +258,64 @@ extension ViewController: OTSubscriberDelegate {
     
     func subscriber(_ subscriber: OTSubscriberKit, didFailWithError error: OTError) {
         print("Subscriber failed: \(error.localizedDescription)")
+        
+        watchRtc?.addEvent(name: "subscriberDidFailWithError",
+                           type: EventType.global,
+                           parameters: ["error" : error.localizedDescription])
+    }
+}
+
+private extension ViewController {
+    func parseRTCStatsJsonString(jsonArrayOfReports: String) -> RTCStatsReport {
+        let statsJson = JSON(parseJSON: jsonArrayOfReports)
+
+        let timestamp = statsJson["timestamp"].int64 ?? Int64(Date().timeIntervalSince1970*1000)
+        
+        var dict = [String: RTCStat]()
+
+        for (_, value) in statsJson {
+            let statTimestamp = value["timestamp"].int64 ?? Int64(Date().timeIntervalSince1970*1000)
+            let rtcStat = RTCStat(timestamp: statTimestamp, properties: value.dictionaryValue)
+            dict[value["id"].stringValue] = rtcStat
+        }
+
+        let rtcStatsReport = RTCStatsReport(report: dict, timestamp: timestamp)
+        
+        return rtcStatsReport
+    }
+}
+
+extension ViewController: OTSubscriberKitRtcStatsReportDelegate {
+    func subscriber(_ subscriber: OTSubscriberKit, rtcStatsReport jsonArrayOfReports: String) {
+        print("subscriber stats fired")
+        
+        let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports)
+
+        rtcStatsReportCallback?(rtcStatReport)
+    }
+}
+
+extension ViewController: OTPublisherKitRtcStatsReportDelegate {
+    func publisher(_ publisher: OTPublisherKit, rtcStatsReport stats: [OTPublisherRtcStats]) {
+        print("publisher stats fired")
+        
+        guard let jsonArrayOfReports = stats.first?.jsonArrayOfReports else {
+            print("publisher stats are empty")
+            
+            return
+        }
+        
+        let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports)
+
+        rtcStatsReportCallback?(rtcStatReport)
+    }
+}
+
+extension ViewController: RtcDataProvider {
+    func getStats(callback: @escaping (RTCStatsReport) -> Void) {
+        self.rtcStatsReportCallback = callback
+        
+        publisher.getRtcStatsReport()
+        subscriber?.getRtcStatsReport()
     }
 }

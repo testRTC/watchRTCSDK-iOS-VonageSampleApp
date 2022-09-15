@@ -1,8 +1,6 @@
-platform :ios, '12.0'
+platform :ios, '13.0'
 use_frameworks!
 
-require_relative '../OpenTokSDKVersion'
-
 target 'Basic-Video-Chat' do
-  pod 'OpenTok', OpenTokSDKVersion
+  pod 'OpenTok', '2.20.0'
 end

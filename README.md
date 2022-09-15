@@ -9,12 +9,11 @@ Quick Start
 
 To use this application:
 
-1. Follow the instructions in the [Quick Start](../README.md#quick-start)
+1. Follow the instructions in the [Quick Start](./QUICK_START.md#quick-start)
    section of the main README file for this repository.
 
    Among other things, you need to set values for the `kApiKey`, `kSessionId`,
-   and `kToken` constants. See [Obtaining OpenTok
-   Credentials](../README.md#obtaining-opentok-credentials)
+   and `kToken` constants. See [Obtaining OpenTok Credentials](./QUICK_START.md#obtaining-opentok-credentials)
    in the main README file for the repository.
 
 2. When you run the application, it connects to an OpenTok session and

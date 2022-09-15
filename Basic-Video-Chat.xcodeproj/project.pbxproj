@@ -3,24 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71DA89602AD4E406F3726D9F /* Pods_Basic_Video_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7688D4FE5247E29D58EE03D3 /* Pods_Basic_Video_Chat.framework */; };
 		A05375D71EB1633400645696 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05375CF1EB1633400645696 /* AppDelegate.swift */; };
 		A05375D81EB1633400645696 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05375D01EB1633400645696 /* Assets.xcassets */; };
 		A05375D91EB1633400645696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D11EB1633400645696 /* LaunchScreen.storyboard */; };
 		A05375DA1EB1633400645696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D31EB1633400645696 /* Main.storyboard */; };
 		A05375DC1EB1633400645696 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05375D61EB1633400645696 /* ViewController.swift */; };
+		A802E58C28D3463C0012DAAE /* WatchRTC-SDK-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */; };
+		A81EA2DD28C1603800E3CB4C /* WatchRTC-SDK-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7688D4FE5247E29D58EE03D3 /* Pods_Basic_Video_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Basic_Video_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B0BF09EEDC921ECE034891 /* Pods-Basic-Video-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Basic-Video-Chat.debug.xcconfig"; path = "Target Support Files/Pods-Basic-Video-Chat/Pods-Basic-Video-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		A05375CF1EB1633400645696 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05375D01EB1633400645696 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A05375D21EB1633400645696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A05375D41EB1633400645696 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A05375D51EB1633400645696 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A05375D61EB1633400645696 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBC101287DA696D24A40529B /* Pods-Basic-Video-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Basic-Video-Chat.release.xcconfig"; path = "Target Support Files/Pods-Basic-Video-Chat/Pods-Basic-Video-Chat.release.xcconfig"; sourceTree = "<group>"; };
 		F86C649A1D5C7C630081846D /* Basic-Video-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Basic-Video-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -29,12 +35,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71DA89602AD4E406F3726D9F /* Pods_Basic_Video_Chat.framework in Frameworks */,
+				A802E58C28D3463C0012DAAE /* WatchRTC-SDK-iOS in Frameworks */,
+				A81EA2DD28C1603800E3CB4C /* WatchRTC-SDK-iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933C8FB6D7D3E5B6DFD3AFF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF09EEDC921ECE034891 /* Pods-Basic-Video-Chat.debug.xcconfig */,
+				BBC101287DA696D24A40529B /* Pods-Basic-Video-Chat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A05375CE1EB1633400645696 /* Basic-Video-Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -48,11 +66,21 @@
 			path = "Basic-Video-Chat";
 			sourceTree = "<group>";
 		};
+		F731C00FB448D4728F227921 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7688D4FE5247E29D58EE03D3 /* Pods_Basic_Video_Chat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F86C64911D5C7C630081846D = {
 			isa = PBXGroup;
 			children = (
 				A05375CE1EB1633400645696 /* Basic-Video-Chat */,
 				F86C649B1D5C7C630081846D /* Products */,
+				933C8FB6D7D3E5B6DFD3AFF9 /* Pods */,
+				F731C00FB448D4728F227921 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F86C64AC1D5C7C630081846D /* Build configuration list for PBXNativeTarget "Basic-Video-Chat" */;
 			buildPhases = (
+				148F9B23CA3EEA2F7F9195C2 /* [CP] Check Pods Manifest.lock */,
 				F86C64961D5C7C630081846D /* Sources */,
 				F86C64971D5C7C630081846D /* Frameworks */,
 				F86C64981D5C7C630081846D /* Resources */,
@@ -80,6 +109,10 @@
 			dependencies = (
 			);
 			name = "Basic-Video-Chat";
+			packageProductDependencies = (
+				A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */,
+				A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */,
+			);
 			productName = "Hello-World";
 			productReference = F86C649A1D5C7C630081846D /* Basic-Video-Chat.app */;
 			productType = "com.apple.product-type.application";
@@ -96,9 +129,7 @@
 				TargetAttributes = {
 					F86C64991D5C7C630081846D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = "";
 						LastSwiftMigration = 1200;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -112,6 +143,9 @@
 				Base,
 			);
 			mainGroup = F86C64911D5C7C630081846D;
+			packageReferences = (
+				A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */,
+			);
 			productRefGroup = F86C649B1D5C7C630081846D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +167,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		148F9B23CA3EEA2F7F9195C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Basic-Video-Chat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F86C64961D5C7C630081846D /* Sources */ = {
@@ -212,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -261,7 +320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -272,12 +331,19 @@
 		};
 		F86C64AD1D5C7C630081846D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94B0BF09EEDC921ECE034891 /* Pods-Basic-Video-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Basic-Video-Chat/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tokbox.Hello-World";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokbox.basicVideoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -287,13 +353,21 @@
 		};
 		F86C64AE1D5C7C630081846D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBC101287DA696D24A40529B /* Pods-Basic-Video-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Basic-Video-Chat/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tokbox.Hello-World";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokbox.basicVideoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -320,6 +394,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/testRTC/watchRTCSDK-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */;
+			productName = "WatchRTC-SDK-iOS";
+		};
+		A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "WatchRTC-SDK-iOS";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F86C64921D5C7C630081846D /* Project object */;
 }
