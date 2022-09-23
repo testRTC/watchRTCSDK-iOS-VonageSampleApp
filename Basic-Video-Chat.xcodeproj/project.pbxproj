@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		A05375D91EB1633400645696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D11EB1633400645696 /* LaunchScreen.storyboard */; };
 		A05375DA1EB1633400645696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D31EB1633400645696 /* Main.storyboard */; };
 		A05375DC1EB1633400645696 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05375D61EB1633400645696 /* ViewController.swift */; };
-		A899221028DE38E100B36850 /* WatchRTC_SDK in Frameworks */ = {isa = PBXBuildFile; productRef = A899220F28DE38E100B36850 /* WatchRTC_SDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A899221028DE38E100B36850 /* WatchRTC_SDK in Frameworks */,
 				71DA89602AD4E406F3726D9F /* Pods_Basic_Video_Chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,15 +99,13 @@
 				F86C64961D5C7C630081846D /* Sources */,
 				F86C64971D5C7C630081846D /* Frameworks */,
 				F86C64981D5C7C630081846D /* Resources */,
+				AF48312CF3F16FDF4DF29565 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Basic-Video-Chat";
-			packageProductDependencies = (
-				A899220F28DE38E100B36850 /* WatchRTC_SDK */,
-			);
 			productName = "Hello-World";
 			productReference = F86C649A1D5C7C630081846D /* Basic-Video-Chat.app */;
 			productType = "com.apple.product-type.application";
@@ -140,9 +136,6 @@
 				Base,
 			);
 			mainGroup = F86C64911D5C7C630081846D;
-			packageReferences = (
-				A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */,
-			);
 			productRefGroup = F86C649B1D5C7C630081846D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -186,6 +179,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF48312CF3F16FDF4DF29565 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Basic-Video-Chat/Pods-Basic-Video-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/WatchRTC_SDK/WatchRTC_SDK.framework/WatchRTC_SDK",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WatchRTC_SDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Basic-Video-Chat/Pods-Basic-Video-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -391,25 +406,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/testRTC/watchRTCSDK-iOS";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A899220F28DE38E100B36850 /* WatchRTC_SDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */;
-			productName = WatchRTC_SDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F86C64921D5C7C630081846D /* Project object */;
 }

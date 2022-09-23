@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'Basic-Video-Chat' do
   pod 'OpenTok', '2.20.0'
+  pod 'WatchRTC_SDK'
 end

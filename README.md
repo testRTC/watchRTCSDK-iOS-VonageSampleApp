@@ -1,13 +1,20 @@
+# Sample app with WatchRTC SDK iOS. 
+WatchRTC is integrated into the app through Swift Package Manager.
+
+For sample app with WatchRTC integrated through Cocoapods, see: [https://github.com/testRTC/watchRTCSDK-iOS-VonageSampleApp/tree/cocoapodsIntegration](https://github.com/testRTC/watchRTCSDK-iOS-VonageSampleApp/tree/cocoapodsIntegration)
+
+
+WatchRTC
+-----------
+WatchRTC related code is located in **ViewController.swift** file
+
+
 Basic Video Chat Sample App
 ===============================
 
 The Basic-Video-Chat app is a very simple application meant to get a new developer
 started using the OpenTok iOS SDK.
 
-
-WatchRTC
------------
-WatchRTC related code is located in **ViewController.swift** file
 
 Quick Start
 -----------
