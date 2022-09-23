@@ -8,7 +8,7 @@
 
 import UIKit
 import OpenTok
-import WatchRTC_SDK_iOS
+import WatchRTC_SDK
 import SwiftyJSON
 
 // *** Fill the following variables using your own Project info  ***

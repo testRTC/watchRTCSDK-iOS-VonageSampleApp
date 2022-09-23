@@ -13,8 +13,7 @@
 		A05375D91EB1633400645696 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D11EB1633400645696 /* LaunchScreen.storyboard */; };
 		A05375DA1EB1633400645696 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05375D31EB1633400645696 /* Main.storyboard */; };
 		A05375DC1EB1633400645696 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05375D61EB1633400645696 /* ViewController.swift */; };
-		A802E58C28D3463C0012DAAE /* WatchRTC-SDK-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */; };
-		A81EA2DD28C1603800E3CB4C /* WatchRTC-SDK-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */; };
+		A899221028DE38E100B36850 /* WatchRTC_SDK in Frameworks */ = {isa = PBXBuildFile; productRef = A899220F28DE38E100B36850 /* WatchRTC_SDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A899221028DE38E100B36850 /* WatchRTC_SDK in Frameworks */,
 				71DA89602AD4E406F3726D9F /* Pods_Basic_Video_Chat.framework in Frameworks */,
-				A802E58C28D3463C0012DAAE /* WatchRTC-SDK-iOS in Frameworks */,
-				A81EA2DD28C1603800E3CB4C /* WatchRTC-SDK-iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +108,7 @@
 			);
 			name = "Basic-Video-Chat";
 			packageProductDependencies = (
-				A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */,
-				A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */,
+				A899220F28DE38E100B36850 /* WatchRTC_SDK */,
 			);
 			productName = "Hello-World";
 			productReference = F86C649A1D5C7C630081846D /* Basic-Video-Chat.app */;
@@ -144,7 +141,7 @@
 			);
 			mainGroup = F86C64911D5C7C630081846D;
 			packageReferences = (
-				A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */,
+				A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */,
 			);
 			productRefGroup = F86C649B1D5C7C630081846D /* Products */;
 			projectDirPath = "";
@@ -396,25 +393,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */ = {
+		A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/testRTC/watchRTCSDK-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A802E58B28D3463C0012DAAE /* WatchRTC-SDK-iOS */ = {
+		A899220F28DE38E100B36850 /* WatchRTC_SDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A802E58A28D3463C0012DAAE /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */;
-			productName = "WatchRTC-SDK-iOS";
-		};
-		A81EA2DC28C1603800E3CB4C /* WatchRTC-SDK-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "WatchRTC-SDK-iOS";
+			package = A899220E28DE38E100B36850 /* XCRemoteSwiftPackageReference "watchRTCSDK-iOS" */;
+			productName = WatchRTC_SDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
