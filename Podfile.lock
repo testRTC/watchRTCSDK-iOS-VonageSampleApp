@@ -1,10 +1,6 @@
 PODS:
   - OpenTok (2.20.0)
-  - Starscream (4.0.4)
-  - SwiftyJSON (5.0.1)
-  - WatchRTC_SDK (1.2.0):
-    - Starscream
-    - SwiftyJSON
+  - WatchRTC_SDK (1.3.0)
 
 DEPENDENCIES:
   - OpenTok (= 2.20.0)
@@ -13,15 +9,11 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - OpenTok
-    - Starscream
-    - SwiftyJSON
     - WatchRTC_SDK
 
 SPEC CHECKSUMS:
   OpenTok: 414c2c1dc6486f1897015e4d1703558d5eed48c3
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
-  WatchRTC_SDK: f19f0dab80cdb0142c0f127a5c40121cc31cf7ea
+  WatchRTC_SDK: 096cb2806de964950dda4435b1f56a6f0079e16f
 
 PODFILE CHECKSUM: e0d03e344ff79922a38c8bd02b20cf8ad75be6ec
 
