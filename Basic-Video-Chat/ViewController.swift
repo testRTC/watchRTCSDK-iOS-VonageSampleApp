@@ -9,7 +9,6 @@
 import UIKit
 import OpenTok
 import WatchRTC_SDK
-import SwiftyJSON
 
 // *** Fill the following variables using your own Project info  ***
 // ***            https://tokbox.com/account/#/                  ***
@@ -266,22 +265,35 @@ extension ViewController: OTSubscriberDelegate {
 }
 
 private extension ViewController {
-    func parseRTCStatsJsonString(jsonArrayOfReports: String) -> RTCStatsReport {
-        let statsJson = JSON(parseJSON: jsonArrayOfReports)
-
-        let timestamp = statsJson["timestamp"].int64 ?? Int64(Date().timeIntervalSince1970*1000)
-        
-        var dict = [String: RTCStat]()
-
-        for (_, value) in statsJson {
-            let statTimestamp = value["timestamp"].int64 ?? Int64(Date().timeIntervalSince1970*1000)
-            let rtcStat = RTCStat(timestamp: statTimestamp, properties: value.dictionaryValue)
-            dict[value["id"].stringValue] = rtcStat
+    func parseRTCStatsJsonString(jsonArrayOfReports: String) -> RTCStatsReport? {
+        guard let jsonData = jsonArrayOfReports.data(using: .utf8) else {
+            print("can not create data from json string")
+            return nil
         }
 
-        let rtcStatsReport = RTCStatsReport(report: dict, timestamp: timestamp)
-        
-        return rtcStatsReport
+        do {
+            guard let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] else {
+                print("can not create json object from data")
+                return nil
+            }
+            
+            let timestamp = Int64(Date().timeIntervalSince1970*1000)
+            
+            var dict = [String: RTCStat]()
+
+            for json in jsonArray {
+                let statTimestamp = json["timestamp"] as? Int64 ?? Int64(Date().timeIntervalSince1970*1000)
+                let rtcStat = RTCStat(timestamp: statTimestamp, properties: json)
+                dict[json["id"] as? String ?? ""] = rtcStat
+            }
+
+            let rtcStatsReport = RTCStatsReport(report: dict, timestamp: timestamp)
+            
+            return rtcStatsReport
+        } catch let error {
+            print(error)
+            return nil
+        }
     }
 }
 
@@ -289,9 +301,9 @@ extension ViewController: OTSubscriberKitRtcStatsReportDelegate {
     func subscriber(_ subscriber: OTSubscriberKit, rtcStatsReport jsonArrayOfReports: String) {
         print("subscriber stats fired")
         
-        let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports)
-
-        rtcStatsReportCallback?(rtcStatReport)
+        if let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports) {
+            rtcStatsReportCallback?(rtcStatReport)
+        }
     }
 }
 
@@ -305,9 +317,9 @@ extension ViewController: OTPublisherKitRtcStatsReportDelegate {
             return
         }
         
-        let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports)
-
-        rtcStatsReportCallback?(rtcStatReport)
+        if let rtcStatReport = self.parseRTCStatsJsonString(jsonArrayOfReports: jsonArrayOfReports) {
+            rtcStatsReportCallback?(rtcStatReport)
+        }
     }
 }
 
