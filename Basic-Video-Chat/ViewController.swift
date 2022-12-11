@@ -44,7 +44,11 @@ class ViewController: UIViewController {
         
         publisher.rtcStatsReportDelegate = self
         
-        let con: WatchRTCConfig = WatchRTCConfig(rtcApiKey: "staging:6d3873f0-f06e-4aea-9a25-1a959ab988cc", rtcRoomId: "VonageTest1", keys: ["company":["YourCompanyName"]])
+        let con: WatchRTCConfig = WatchRTCConfig(
+            rtcApiKey: "staging:6d3873f0-f06e-4aea-9a25-1a959ab988cc",
+            rtcRoomId: "VonageTest1",
+            rtcPeerId: "YOUR_PEER_ID",
+            keys: ["company":["YourCompanyName"]])
         self.watchRtc = WatchRTC(dataProvider: self)
         guard let watchRtc = self.watchRtc else {
             debugPrint("error with watchRtc initialization")
