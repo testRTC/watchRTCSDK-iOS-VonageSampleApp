@@ -1,6 +1,6 @@
 PODS:
   - OpenTok (2.20.0)
-  - WatchRTC_SDK (1.4.0)
+  - WatchRTC_SDK (1.5.0)
 
 DEPENDENCIES:
   - OpenTok (= 2.20.0)
@@ -13,7 +13,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   OpenTok: 414c2c1dc6486f1897015e4d1703558d5eed48c3
-  WatchRTC_SDK: de30b17da53cb3ac3a69d78f1a6764448ee64d9f
+  WatchRTC_SDK: 8abf9e15df208e7bceaa18f7ef70591bf0d89c24
 
 PODFILE CHECKSUM: e0d03e344ff79922a38c8bd02b20cf8ad75be6ec
 
