@@ -1,20 +1,24 @@
 PODS:
-  - OpenTok (2.20.0)
+  - OpenTok (2.25.0):
+    - VonageWebRTC (= 99.2.39)
+  - VonageWebRTC (99.2.39)
   - WatchRTC_SDK (1.5.1)
 
 DEPENDENCIES:
-  - OpenTok (= 2.20.0)
+  - OpenTok
   - WatchRTC_SDK
 
 SPEC REPOS:
   trunk:
     - OpenTok
+    - VonageWebRTC
     - WatchRTC_SDK
 
 SPEC CHECKSUMS:
-  OpenTok: 414c2c1dc6486f1897015e4d1703558d5eed48c3
+  OpenTok: f837a493e3e6993ae604ede80d2548dde4f8cc96
+  VonageWebRTC: 4b57187170ef4ea435006e932600646a0521d6b0
   WatchRTC_SDK: dcc469e5940aae94a21e7710296a47b2f2d8c71d
 
-PODFILE CHECKSUM: e0d03e344ff79922a38c8bd02b20cf8ad75be6ec
+PODFILE CHECKSUM: 8d04ff6627a71ea365f1ceab8e8ca4a3f051db8b
 
 COCOAPODS: 1.11.3
