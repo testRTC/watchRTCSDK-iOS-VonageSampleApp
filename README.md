@@ -5,7 +5,7 @@ For sample app with WatchRTC integrated through Cocoapods, see: [https://github.
 
 WatchRTC
 -----------
-WatchRTC related code is located in **ViewController.swift** file
+All of the `WatchRTC` related code is located in [ViewController.swift](Basic-Video-Chat/ViewController.swift) file
 
 Basic Video Chat Sample App
 ===============================
